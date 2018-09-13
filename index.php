@@ -1,9 +1,4 @@
 <?php
 
-
-
 require 'vendor/autoload.php';
 require 'app/bootstrap.php';
-
-
-echo getenv['HOST'];

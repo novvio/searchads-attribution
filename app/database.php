@@ -23,10 +23,10 @@ $capsule->addConnection (
 $capsule->addConnection (
 	[
 		'driver' => 'pgsql',
-		'host' => ENV['HOST'],
-		'username' => ENV['USER'],
-		'password' => ENV['PASS'],
-		'database' => ENV['DATABASE'],
+		'host' => getenv('HOST'),
+		'username' => getenv('USER'),
+		'password' => getenv('PASS'),
+		'database' => getenv('DATABASE'),
 		'charset' => 'utf8',
 		'collation' => 'utf8_general_ci',
 		'port' => '5432',
