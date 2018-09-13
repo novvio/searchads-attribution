@@ -4,21 +4,21 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule();
 
-/*
+
 $capsule->addConnection (
 	[
-		'driver' => 'mysql',
-		'host' => '127.0.0.1',
-		'username' => 'root',
+		'driver' => 'pgsql',
+		'host' => 'localhost',
+		'username' => 'celilbozkurt',
 		'password' => '',
-		'database' => 'password_db',
+		'database' => 'celilbozkurt',
 		'charset' => 'utf8',
 		'collation' => 'utf8_general_ci',
 		'prefix' => ''
 	]
 );
 
-*/
+/*
 
 $capsule->addConnection (
 	[
@@ -34,6 +34,8 @@ $capsule->addConnection (
 		'sslmode' => 'require'
 	]
 );
+
+*/
 
 
 

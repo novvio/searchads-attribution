@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class ExampleDataController { 
 
     public function Example($request, $response) {
-        $Examples = ExampleData::->get()->toArray();
+        $Examples = ExampleData::all()->toArray();
 
         return $response->withJson(['Examples' => $Examples], 200);
     }   
