@@ -32,7 +32,7 @@ $capsule->addConnection (
 		'port' => '5432',
 		'prefix' => '',
 		'sslmode' => 'require',
-		'url' = getenv('DATABASE_URL')
+		'url' => getenv('DATABASE_URL')
 	]
 );
 
