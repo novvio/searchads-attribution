@@ -31,13 +31,10 @@ $capsule->addConnection (
 		'collation' => 'utf8_general_ci',
 		'port' => '5432',
 		'prefix' => '',
-		'sslmode' => 'require'
+		'sslmode' => 'require',
+		'url' = getenv('DATABASE_URL')
 	]
 );
-
-
-
-
 
 
 $capsule->bootEloquent();
