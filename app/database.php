@@ -4,7 +4,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule();
 
-
+/*
 $capsule->addConnection (
 	[
 		'driver' => 'pgsql',
@@ -18,7 +18,7 @@ $capsule->addConnection (
 	]
 );
 
-/*
+*/
 
 $capsule->addConnection (
 	[
@@ -35,7 +35,7 @@ $capsule->addConnection (
 	]
 );
 
-*/
+
 
 
 
