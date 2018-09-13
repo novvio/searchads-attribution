@@ -6,4 +6,4 @@ require 'vendor/autoload.php';
 require 'app/bootstrap.php';
 
 
-echo env['HOST'];
+echo ENV['HOST'];
