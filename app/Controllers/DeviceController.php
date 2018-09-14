@@ -10,6 +10,10 @@ class DeviceController {
 	public function addDevice($request, $response) {
 		$params = $request->getparams();
 
-		return $response->withJson($params, 200);
+		DeviceData::updateOrCreate($params);
+
+		$database = DeviceData::get();
+
+		return $response->withJson($database, 200);
 	}
 }
