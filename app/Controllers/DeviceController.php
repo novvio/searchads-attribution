@@ -17,7 +17,7 @@ class DeviceController {
 		];
 
 		$devices = new DeviceData;
-		$devices->create($deviceData);
+		$devices->updateOrCreate($deviceData);
 
 		return $response->withJson($devices->get(), 200);
 	}
