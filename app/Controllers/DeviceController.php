@@ -6,7 +6,7 @@ use App\Models\DeviceData;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class DeviceControler { 
+class DeviceController { 
 	public function addDevice($request, $response) {
 		return $response->withJson(['Examples' => 'celil'], 200);
 	}
