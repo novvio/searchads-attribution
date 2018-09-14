@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class AttributionsData extends Eloquent {
+class AttributionData extends Eloquent {
 	public $timestamps = false;
 
 	protected $table = 'attributions';

@@ -20,8 +20,8 @@ $container['DeviceController'] = function() {
 	return new \App\Controllers\DeviceController;
 };
 
-$container['AttributionsController'] = function() {
-	return new \App\Controllers\AttributionsController;
+$container['AttributionController'] = function() {
+	return new \App\Controllers\AttributionController;
 };
 
 require 'routes.php';

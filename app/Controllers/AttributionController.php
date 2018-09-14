@@ -1,12 +1,12 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\AttributionsData;
+use App\Models\AttributionData;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class AttributionsController { 
+class AttributionController { 
 	public function addAttribution($request, $response) {
 		$params = $request->getparams();
 
@@ -19,12 +19,12 @@ class AttributionsController {
 				'keyword' => $params['keyword']
 		];
 
-		$attribution = new AttributionsData;
+		$attribution = new AttributionData;
 		$attribution->updateOrCreate($attributionData);
 
 		$responseMessage = [
 			'Status' => 'Success',
-			'Message' => 'Devices attribution added.'
+			'Message' => 'Attribution added to device.'
 		];
 
 		return $response->withJson($responseMessage, 200);
