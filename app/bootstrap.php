@@ -24,4 +24,8 @@ $container['AttributionController'] = function() {
 	return new \App\Controllers\AttributionController;
 };
 
+$container['EventController'] = function() {
+	return new \App\Controllers\EventController;
+};
+
 require 'routes.php';
