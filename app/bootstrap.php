@@ -18,6 +18,6 @@ $container['db'] = function ($container) use ($capsule) {
 
 $container['DeviceController'] = function() {
 	return new \App\Controllers\DeviceController;
-}
+};
 
 require 'routes.php';
