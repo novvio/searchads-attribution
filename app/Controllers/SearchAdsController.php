@@ -1,13 +1,13 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\DeviceData;
+use App\Models\SearchAdsData;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
-class DeviceController { 
-	public function addDevice($request, $response) {
+class SearchAdsController { 
+	public function addPurchase($request, $response) {
 		return $response->withJson(['Examples' => 'celil'], 200);
 	}
 }

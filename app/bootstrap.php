@@ -20,4 +20,8 @@ $container['DeviceController'] = function() {
 	return new \App\Controllers\DeviceController;
 };
 
+$container['SearchAdsController'] = function() {
+	return new \App\Controllers\SearchAdsController;
+};
+
 require 'routes.php';
