@@ -10,12 +10,15 @@ class DeviceController {
 	public function addDevice($request, $response) {
 		$params = $request->getparams();
 
+		$deviceData = [
+			'device_id' => $params['deviceId'],
+			'country' => $params['country'],
+			'attribution_channel' => $params['attributionChannel']
+		];
+
 		$devices = new DeviceData;
-		$devices->create($params);
-		$devices->save();
+		$devices->create($deviceData);
 
-		$database = DeviceData::get();
-
-		return $response->withJson($database, 200);
+		return $response->withJson($devices->get(), 200);
 	}
 }
