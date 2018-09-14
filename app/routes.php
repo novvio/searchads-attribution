@@ -2,6 +2,6 @@
 
 $app->get('/addDevice', 'DeviceController:addDevice');
 
-$app->get('/addPuchase', 'SearchAdsController:addPurchase');
+$app->get('/addPurchase', 'SearchAdsController:addPurchase');
 
 $app->run();
