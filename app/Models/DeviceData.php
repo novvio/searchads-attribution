@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class DeviceData extends Eloquent {
-	public $timestamps = true;
+	public $timestamps = false;
 
 	protected $table = 'devices';
 	protected $primaryKey = 'id';
