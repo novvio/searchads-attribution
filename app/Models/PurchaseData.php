@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class PurchaseData extends Eloquent {
-	public $timestamps = true;
+	public $timestamps = false;
 
 	protected $table = 'purchases';
 	protected $primaryKey = 'id';
