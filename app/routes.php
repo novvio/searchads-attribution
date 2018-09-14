@@ -1,5 +1,5 @@
 <?php
 
-$app->get('/example', 'ExampleDataController:Example');
+$app->get('/addDevice', 'DeviceController:addDevice');
 
 $app->run();
