@@ -14,8 +14,10 @@ class DeviceController {
 			[
 				'device_id' => $params['deviceId']
 			],
-			'country' => $params['country'],
-			'attribution_channel' => $params['attributionChannel']
+			[
+				'country' => $params['country'],
+				'attribution_channel' => $params['attributionChannel']
+			]
 		];
 
 		$devices = new DeviceData;
