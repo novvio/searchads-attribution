@@ -17,8 +17,13 @@ class DeviceController {
 		];
 
 		$devices = new DeviceData;
-		$devices->updateOrCreate($deviceData);
+		$devices->firstOrCreate($deviceData);
 
-		return $response->withJson($devices->get(), 200);
+		$responseMessage = [
+			'Status' => 'Success',
+			'Message' => 'Device added.'
+		];
+
+		return $response->withJson($responseMessage, 200);
 	}
 }
