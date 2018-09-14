@@ -16,8 +16,16 @@ $container['db'] = function ($container) use ($capsule) {
 	return $capsule;
 };
 
-$container['ExampleDataController'] = function () {
-	return new \App\Controllers\ExampleDataController;
+$container['DeviceController'] = function() {
+	return new \App\Controllers\DeviceController;
+};
+
+$container['AttributionController'] = function() {
+	return new \App\Controllers\AttributionController;
+};
+
+$container['EventController'] = function() {
+	return new \App\Controllers\EventController;
 };
 
 require 'routes.php';
