@@ -2,6 +2,6 @@
 
 $app->post('/addDevice', 'DeviceController:addDevice');
 
-$app->get('/addPurchase', 'SearchAdsController:addPurchase');
+$app->get('/addAttribution', 'AttributionsController:addAttribution');
 
 $app->run();

@@ -17,7 +17,7 @@ class DeviceController {
 		];
 
 		$devices = new DeviceData;
-		$devices->firstOrCreate($deviceData);
+		$devices->updateOrCreate($deviceData);
 
 		$responseMessage = [
 			'Status' => 'Success',
