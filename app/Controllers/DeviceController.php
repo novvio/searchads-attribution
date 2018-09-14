@@ -8,6 +8,8 @@ use Illuminate\Support\Collection;
 
 class DeviceController { 
 	public function addDevice($request, $response) {
-		return $response->withJson(['Examples' => 'celil'], 200);
+		$params = $request->getparams();
+
+		return $response->withJson($params, 200);
 	}
 }

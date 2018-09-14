@@ -1,6 +1,6 @@
 <?php
 
-$app->get('/addDevice', 'DeviceController:addDevice');
+$app->post('/addDevice', 'DeviceController:addDevice');
 
 $app->get('/addPurchase', 'SearchAdsController:addPurchase');
 
