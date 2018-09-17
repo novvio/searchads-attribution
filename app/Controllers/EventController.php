@@ -32,7 +32,7 @@ class EventController {
 		$today = Carbon::today();
 
 		$purchaseData = new PurchaseData;
-		$purchaseData->where('created_at', $today)->toArray();
+		$purchaseData->where('created_at', $today)->all();
 
 		$responseMessage = [
 			'Status' => 'Success',
