@@ -31,7 +31,7 @@ class EventController {
 	public function getTodayTurnover($request, $response) {
 		$today = Carbon::today();
 
-		PurchaseData::where('created_at', '>=', $today)->sum();
+		PurchaseData::where('created_at', '>=', $today)->max('price');
 
 		$responseMessage = [
 			'Status' => 'Success',
