@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class EventController { 
-	$purchaseData = new PurchaseData;
 
 	public function addPurchase($request, $response) {
 		$params = $request->getparams();
@@ -19,7 +18,7 @@ class EventController {
 				'price' => $params['price']
 		];
 
-		$purchaseData->create($request);
+		PurchaseData::create($request);
 
 		$responseMessage = [
 			'Status' => 'Success',
@@ -31,8 +30,8 @@ class EventController {
 
 	public function getTodayTurnover($request, $response) {
 		$today = Carbon::today();
-		
-		$purchasesArray = $purchaseData->where('created_at', '>=', $today)->sum();
+
+		PurchaseData::where('created_at', '>=', $today)->sum();
 
 		$responseMessage = [
 			'Status' => 'Success',
