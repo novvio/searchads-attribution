@@ -18,7 +18,7 @@ class EventController {
 		];
 
 		$attribution = new PurchaseData;
-		$attribution->updateOrCreate($purchaseData);
+		$attribution->create($purchaseData);
 
 		$responseMessage = [
 			'Status' => 'Success',
