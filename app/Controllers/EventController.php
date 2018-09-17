@@ -17,12 +17,27 @@ class EventController {
 				'price' => $params['price']
 		];
 
-		$attribution = new PurchaseData;
-		$attribution->create($purchaseData);
+		$purchase = new PurchaseData;
+		$purchase->create($purchase);
 
 		$responseMessage = [
 			'Status' => 'Success',
 			'Message' => 'Purchase event added to device.'
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodayTurnover($request, $response) {
+		$today = Carbon::today();
+
+		$purchaseData = new PurchaseData;
+		$purchaseData->where('created_at', $today)->toArray();
+
+		$responseMessage = [
+			'Status' => 'Success',
+			'Message' => 'Purchase event added to device.',
+			'purchaseData' => $purchaseData
 		];
 
 		return $response->withJson($responseMessage, 200);
