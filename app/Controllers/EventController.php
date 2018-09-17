@@ -31,12 +31,13 @@ class EventController {
 	public function getTodayTurnover($request, $response) {
 		$today = Carbon::today();
 
-		PurchaseData::where('created_at', '>=', $today)->sum('price');
+		$totalPrices = PurchaseData::where('created_at', '>=', $today)
+						->sum('price');
 
 		$responseMessage = [
 			'Status' => 'Success',
 			'Message' => 'Purchase event added to device.',
-			'purchaseData' => $purchasesArray
+			'TodayPrices' => $totalPrices
 		];
 
 		return $response->withJson($responseMessage, 200);
