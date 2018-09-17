@@ -32,12 +32,12 @@ class EventController {
 		$today = Carbon::today();
 
 		$purchaseData = new PurchaseData;
-		$purchaseData->where('purchase_id', 'des')->get()->toArray();
+		$purchasesArray = $purchaseData->where('created_at', $today)->get()->toArray();
 
 		$responseMessage = [
 			'Status' => 'Success',
 			'Message' => 'Purchase event added to device.',
-			'purchaseData' => $purchaseData
+			'purchaseData' => $purchasesArray
 		];
 
 		return $response->withJson($responseMessage, 200);
