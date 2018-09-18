@@ -10,4 +10,6 @@ $app->get('/todayTurnover', 'EventController:getTodayTurnover');
 
 $app->get('/todaySales', 'EventController:getTodaySales');
 
+$app->get('/todayOrganic', 'DeviceController:getTodayOrganic');
+
 $app->run();
