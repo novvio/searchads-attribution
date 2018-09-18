@@ -53,11 +53,13 @@ class EventController {
 	}
 
 	public function getLastSales($request, $response) {
-		$lastSales = PurchaseData::orderBy('id', 'desc')
-               		->take(5)
-               		->get()
-               		->attributions
-               		->toArray();
+        $lastSales = PurchaseData::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
+            ->select('purchases.*', 'attributions.campaign_name', 'attributions.adgroup_name')
+            ->orderBy('purchases.id', 'desc')
+            ->take(5)
+            ->get()
+            ->makeHidden('purchase_id')
+            ->toArray();
 
 		$responseMessage = [
 			'status' => 'Success',
