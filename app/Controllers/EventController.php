@@ -56,7 +56,7 @@ class EventController {
 		$lastSales = PurchaseData::orderBy('id', 'desc')
                		->take(5)
                		->get()
-               		->attributions()
+               		->attributions
                		->toArray();
 
 		$responseMessage = [
