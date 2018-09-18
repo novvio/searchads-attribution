@@ -51,4 +51,17 @@ class EventController {
 
 		return $response->withJson($responseMessage, 200);
 	}
+
+	public function getLastSales($request, $response) {
+		$lastSales = PurchaseData::orderBy('id', 'desc')
+               		->take(5)
+               		->get()->toArray();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'lastSales' => $lastSales
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
 }
