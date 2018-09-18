@@ -26,4 +26,19 @@ class DeviceController {
 
 		return $response->withJson($responseMessage, 200);
 	}
+
+	public function getTodayOrganic($request, $response) {
+		$today = Carbon::today();
+
+		$todayOrganic = PurchaseData::where('created_at', '>=', $today)
+						->count();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'message' => 'Purchase event added to device.',
+			'todaySales' => $todaySales
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
 }

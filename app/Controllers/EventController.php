@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class EventController { 
+	var $today = Carbon::today();
 
 	public function addPurchase($request, $response) {
 		$params = $request->getparams();
@@ -21,23 +22,34 @@ class EventController {
 		PurchaseData::create($request);
 
 		$responseMessage = [
-			'Status' => 'Success',
-			'Message' => 'Purchase event added to device.'
+			'status' => 'Success',
+			'message' => 'Purchase event added to device.'
 		];
 
 		return $response->withJson($responseMessage, 200);
 	}
 
 	public function getTodayTurnover($request, $response) {
-		$today = Carbon::today();
-
-		$totalPrices = PurchaseData::where('created_at', '>=', $today)
+		$todayPrice = PurchaseData::where('created_at', '>=', $this->today)
 						->sum('price');
 
 		$responseMessage = [
-			'Status' => 'Success',
-			'Message' => 'Purchase event added to device.',
-			'TodayPrices' => $totalPrices
+			'status' => 'Success',
+			'message' => 'Purchase event added to device.',
+			'todayPrice' => $todayPrice
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodaySales($request, $response) {
+		$todaySales = PurchaseData::where('created_at', '>=', $this->today)
+						->count();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'message' => 'Purchase event added to device.',
+			'todaySales' => $todaySales
 		];
 
 		return $response->withJson($responseMessage, 200);

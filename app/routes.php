@@ -8,4 +8,6 @@ $app->post('/addPurchase', 'EventController:addPurchase');
 
 $app->get('/todayTurnover', 'EventController:getTodayTurnover');
 
+$app->get('/todaySales', 'EventController:getTodaySales');
+
 $app->run();
