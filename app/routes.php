@@ -12,4 +12,6 @@ $app->get('/todaySales', 'EventController:getTodaySales');
 
 $app->get('/todayOrganic', 'DeviceController:getTodayOrganic');
 
+$app->get('/todayPaid', 'DeviceController:getTodayPaid');
+
 $app->run();

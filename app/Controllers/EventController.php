@@ -34,7 +34,6 @@ class EventController {
 
 		$responseMessage = [
 			'status' => 'Success',
-			'message' => 'Purchase event added to device.',
 			'todayPrice' => $todayPrice
 		];
 
@@ -47,7 +46,6 @@ class EventController {
 
 		$responseMessage = [
 			'status' => 'Success',
-			'message' => 'Purchase event added to device.',
 			'todaySales' => $todaySales
 		];
 

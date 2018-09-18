@@ -28,16 +28,26 @@ class DeviceController {
 	}
 
 	public function getTodayOrganic($request, $response) {
-		$today = Carbon::today();
-
 		$todayOrganic = DeviceData::where('attribution_channel', 'organic')
 						->where('created_at', '>=', Carbon::today())
 						->count();
 
 		$responseMessage = [
 			'status' => 'Success',
-			'message' => 'Purchase event added to device.',
 			'todayOrganic' => $todayOrganic
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodayPaid($request, $response) {
+		$todayPaid = DeviceData::where('attribution_channel', '!=','organic')
+						->where('created_at', '>=', Carbon::today())
+						->count();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'todayPaid' => $todayPaid
 		];
 
 		return $response->withJson($responseMessage, 200);
