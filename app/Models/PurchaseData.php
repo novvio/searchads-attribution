@@ -10,4 +10,9 @@ class PurchaseData extends Eloquent {
 	protected $table = 'purchases';
 	protected $primaryKey = 'id';
 	protected $fillable = ['device_id', 'purchase_id', 'purchase_name', 'price'];
+
+
+	public function attributions() {
+    	return $this->belongsTo('App\AttributionData', 'campaign_name');
+	}
 }

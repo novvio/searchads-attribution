@@ -55,7 +55,9 @@ class EventController {
 	public function getLastSales($request, $response) {
 		$lastSales = PurchaseData::orderBy('id', 'desc')
                		->take(5)
-               		->get()->toArray();
+               		->get()
+               		->attributions()
+               		->toArray();
 
 		$responseMessage = [
 			'status' => 'Success',
