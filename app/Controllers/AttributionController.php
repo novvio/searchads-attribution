@@ -34,7 +34,7 @@ class AttributionController {
 
 	public function getTodayCampaigns($request, $response) {
 		$trends = Capsule::table('attributions')
-					->select('campaign_name', Capsule::raw('count(*) as total'))
+					->select('campaign_id', Capsule::raw('count(*) as total'))
 					->where('updated_at', '>=', Carbon::today())
 					->groupBy('campaign_name')
 					->orderBy('total', 'desc')
@@ -50,7 +50,7 @@ class AttributionController {
 
 	public function getTodayAdGroups($request, $response) {
 		$trends = Capsule::table('attributions')
-					->select('adgroup_name', Capsule::raw('count(*) as total'))
+					->select('adgroup_id', Capsule::raw('count(*) as total'))
 					->where('updated_at', '>=', Carbon::today())
 					->groupBy('adgroup_name')
 					->orderBy('total', 'desc')
