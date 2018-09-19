@@ -12,10 +12,14 @@ class AuthMiddleware {
 		$exist = AppData::where('api_key', $api_key)->exists();
 
 		if (!$exist) {
-			$responseMessage = ['ss' => 'sd'];
-			$response->withHeader('Content-Type', 'application/json');
-			$response->withStatus(401);
-			$response->write(json_encode($responseMessage));
+			$responseMessage = [
+				'error' => [
+					'status' => 401,
+					'message' => 'Bad Authentication data.'
+				]
+			];
+			
+			$response = $response->withJson($responseMessage, 401);
 			return $response;
 		}
 
