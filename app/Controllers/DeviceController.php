@@ -16,7 +16,7 @@ class DeviceController {
 				'attribution_channel' => $params['attributionChannel']
 		];
 
-		DeviceData::updateOrCreate($deviceData)->save();
+		DeviceData::updateOrCreate($deviceData)->touch();
 
 		$responseMessage = [
 			'status' => 'Success',
