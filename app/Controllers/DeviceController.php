@@ -16,7 +16,7 @@ class DeviceController {
 				'attribution_channel' => $params['attributionChannel']
 		];
 
-		DeviceData::updateOrCreate($deviceData)->setUpdatedAt();
+		DeviceData::updateOrCreate($deviceData)->save();
 
 		$responseMessage = [
 			'status' => 'Success',
