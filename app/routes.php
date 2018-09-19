@@ -7,12 +7,10 @@ $app->group('', function() {
 	$this->post('/addDevice', 'DeviceController:addDevice');
 	$this->post('/addAttribution', 'AttributionController:addAttribution');
 	$this->post('/addPurchase', 'EventController:addPurchase');
-
-	$this->get('/todayTurnover', 'EventController:getTodayTurnover');
 })->add(new AuthMiddleware($container));
 
 // Panel Endpoints
-//$app->get('/todayTurnover', 'EventController:getTodayTurnover');
+$app->get('/todayTurnover', 'EventController:getTodayTurnover');
 $app->get('/todaySales', 'EventController:getTodaySales');
 $app->get('/todayOrganic', 'DeviceController:getTodayOrganic');
 $app->get('/todayPaid', 'DeviceController:getTodayPaid');
