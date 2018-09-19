@@ -10,13 +10,10 @@ class DeviceController {
 	public function addDevice($request, $response) {
 		$params = $request->getparams();
 
-		$deviceData = [
-							'device_id' => $params['deviceId']
-						],
-						[
-							'country' => $params['country'],
+		$deviceData = array(['device_id' => $params['deviceId']],
+						[	'country' => $params['country'],
 							'attribution_channel' => $params['attributionChannel']
-						];
+						]);
 
 		DeviceData::updateOrCreate($deviceData)->touch();
 
