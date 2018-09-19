@@ -10,18 +10,46 @@ class DeviceController {
 	public function addDevice($request, $response) {
 		$params = $request->getparams();
 
-		$deviceData = [
-				'device_id' => $params['deviceId'],
-				'country' => $params['country'],
-				'attribution_channel' => $params['attributionChannel']
+		$checkData = [
+			'device_id' => $params['deviceId']
 		];
 
-		$devices = new DeviceData;
-		$devices->updateOrCreate($deviceData);
+		$updateData = [
+			'country' => $params['country'],
+			'attribution_channel' => $params['attributionChannel']
+		];
+
+		DeviceData::updateOrCreate($checkData, $updateData)->touch();
 
 		$responseMessage = [
-			'Status' => 'Success',
-			'Message' => 'Device added.'
+			'status' => 'Success',
+			'message' => 'Device added.'
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodayOrganic($request, $response) {
+		$todayOrganic = DeviceData::where('attribution_channel', 'organic')
+						->where('updated_at', '>=', Carbon::today())
+						->count();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'todayOrganic' => $todayOrganic
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodayPaid($request, $response) {
+		$todayPaid = DeviceData::where('attribution_channel', '!=','organic')
+						->where('updated_at', '>=', Carbon::today())
+						->count();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'todayPaid' => $todayPaid
 		];
 
 		return $response->withJson($responseMessage, 200);

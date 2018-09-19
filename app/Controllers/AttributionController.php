@@ -1,8 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use Illuminate\Database\Capsule\Manager as Capsule;
 use App\Models\AttributionData;
-
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -10,21 +10,55 @@ class AttributionController {
 	public function addAttribution($request, $response) {
 		$params = $request->getparams();
 
-		$attributionData = [
-				'device_id' => $params['deviceId'],
-				'campaign_name' => $params['campaignName'],
-				'campaign_id' => $params['campaignId'],
-				'adgroup_name' => $params['adgroupName'],
-				'adgroup_id' => $params['adgroupId'],
-				'keyword' => $params['keyword']
+		$checkData = [
+			'device_id' => $params['deviceId']
 		];
 
-		$attribution = new AttributionData;
-		$attribution->updateOrCreate($attributionData);
+		$updateData = [
+			'campaign_name' => $params['campaignName'],
+			'campaign_id' => $params['campaignId'],
+			'adgroup_name' => $params['adgroupName'],
+			'adgroup_id' => $params['adgroupId'],
+			'keyword' => $params['keyword']
+		];
+
+		AttributionData::updateOrCreate($checkData, $updateData)->touch();
 
 		$responseMessage = [
-			'Status' => 'Success',
-			'Message' => 'Attribution added to device.'
+			'status' => 'Success',
+			'message' => 'Attribution added to device.'
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodayCampaigns($request, $response) {
+		$todayCampaigns = Capsule::table('attributions')
+					->select('campaign_id','campaign_name', Capsule::raw('count(*) as total'))
+					->where('updated_at', '>=', Carbon::today())
+					->groupBy('campaign_id', 'campaign_name')
+					->orderBy('total', 'desc')
+					->get();
+
+		$responseMessage = [
+			'status' => 'Success',
+			'todayCampaigns' => $todayCampaigns
+		];
+
+		return $response->withJson($responseMessage, 200);
+	}
+
+	public function getTodayAdGroups($request, $response) {
+		$todayAdGroups = Capsule::table('attributions')
+					->select('adgroup_id', 'adgroup_name', Capsule::raw('count(*) as total'))
+					->where('updated_at', '>=', Carbon::today())
+					->groupBy('adgroup_id', 'adgroup_name')
+					->orderBy('total', 'desc')
+					->get();
+					
+		$responseMessage = [
+			'status' => 'Success',
+			'todayAdGroups' => $todayAdGroups
 		];
 
 		return $response->withJson($responseMessage, 200);

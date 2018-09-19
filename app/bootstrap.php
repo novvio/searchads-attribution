@@ -28,4 +28,8 @@ $container['EventController'] = function() {
 	return new \App\Controllers\EventController;
 };
 
+$container['FilterController'] = function() {
+	return new \App\Controllers\FilterController;
+};
+
 require 'routes.php';
