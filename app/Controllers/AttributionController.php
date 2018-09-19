@@ -11,18 +11,18 @@ class AttributionController {
 		$params = $request->getparams();
 
 		$checkData = [
-				'device_id' => $params['deviceId']
+			'device_id' => $params['deviceId']
 		];
 
 		$updateData = [
-				'campaign_name' => $params['campaignName'],
-				'campaign_id' => $params['campaignId'],
-				'adgroup_name' => $params['adgroupName'],
-				'adgroup_id' => $params['adgroupId'],
-				'keyword' => $params['keyword']
+			'campaign_name' => $params['campaignName'],
+			'campaign_id' => $params['campaignId'],
+			'adgroup_name' => $params['adgroupName'],
+			'adgroup_id' => $params['adgroupId'],
+			'keyword' => $params['keyword']
 		];
 
-		AttributionData::updateOrCreate($checkData, $updateData);
+		AttributionData::updateOrCreate($checkData, $updateData)->touch();
 
 		$responseMessage = [
 			'status' => 'Success',

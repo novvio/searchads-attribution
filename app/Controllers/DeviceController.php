@@ -11,12 +11,12 @@ class DeviceController {
 		$params = $request->getparams();
 
 		$checkData = [
-			'device_id'] => $params['deviceId']
+			'device_id' => $params['deviceId']
 		];
-		
+
 		$updateData = [
-						'country' => $params['country'],
-						'attribution_channel' => $params['attributionChannel']
+			'country' => $params['country'],
+			'attribution_channel' => $params['attributionChannel']
 		];
 
 		DeviceData::updateOrCreate($checkData, $updateData);
