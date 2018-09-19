@@ -55,7 +55,7 @@ class EventController {
 	public function getLastSales($request, $response) {
         $lastSales = PurchaseData::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
             ->select('purchases.*', 'attributions.campaign_name', 'attributions.adgroup_name')
-            ->orderBy('purchases.create_at', 'desc')
+            ->orderBy('purchases.created_at', 'desc')
             ->take(5)
             ->get()
             ->makeHidden('purchase_id')
