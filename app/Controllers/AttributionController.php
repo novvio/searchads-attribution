@@ -36,7 +36,7 @@ class AttributionController {
 		$trends = Capsule::table('attributions')
 					->select('campaign_id','campaign_name', Capsule::raw('count(*) as total'))
 					->where('updated_at', '>=', Carbon::today())
-					->groupBy('campaign_name')
+					->groupBy('campaign_id', 'campaign_name')
 					->orderBy('total', 'desc')
 					->get();
 
