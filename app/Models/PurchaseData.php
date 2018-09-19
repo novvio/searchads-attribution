@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class PurchaseData extends Eloquent {
 	public $timestamps = true;
+	const UPDATED_AT = null;
 
 	protected $table = 'purchases';
 	protected $primaryKey = 'id';

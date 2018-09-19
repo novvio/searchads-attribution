@@ -9,7 +9,6 @@ class DeviceData extends Eloquent {
 
 	protected $table = 'devices';
 	protected $primaryKey = 'id';
-	protected $uniqueKey = 'device_id';
 	protected $fillable = ['device_id', 'country', 'attribution_channel'];
 	protected $hidden = ['id', 'device_id', 'updated_at'];
 }
