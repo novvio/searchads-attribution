@@ -20,4 +20,6 @@ $app->get('/todayCampaigns', 'AttributionController:getTodayCampaigns');
 
 $app->get('/todayAdGroups', 'AttributionController:getTodayAdGroups');
 
+$app->get('/filter', 'FilterController:filter');
+
 $app->run();

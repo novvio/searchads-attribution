@@ -19,8 +19,7 @@ class AttributionController {
 				'keyword' => $params['keyword']
 		];
 
-		$attribution = new AttributionData;
-		$attribution->updateOrCreate($attributionData);
+		AttributionData::updateOrCreate($attributionData);
 
 		$responseMessage = [
 			'status' => 'Success',
