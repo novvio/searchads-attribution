@@ -10,10 +10,13 @@ class DeviceController {
 	public function addDevice($request, $response) {
 		$params = $request->getparams();
 
-		DeviceData::updateOrCreate(['device_id' => $params['deviceId']], 
-									['country' => $params['country'],
-									'attribution_channel' => $params['attributionChannel']
-									]);
+		$checkData = ['device_id'] => $params['deviceId'];
+		$updateData = [
+						'country' => $params['country'],
+						'attribution_channel' => $params['attributionChannel']
+		];
+
+		DeviceData::updateOrCreate($checkData, $updateData);
 
 		$responseMessage = [
 			'status' => 'Success',

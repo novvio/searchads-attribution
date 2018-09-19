@@ -10,8 +10,8 @@ class AttributionController {
 	public function addAttribution($request, $response) {
 		$params = $request->getparams();
 
-		$attributionData = [
-				'device_id' => $params['deviceId'],
+		$checkData = ['device_id'] => $params['deviceId'];
+		$updateData = [
 				'campaign_name' => $params['campaignName'],
 				'campaign_id' => $params['campaignId'],
 				'adgroup_name' => $params['adgroupName'],
@@ -19,7 +19,7 @@ class AttributionController {
 				'keyword' => $params['keyword']
 		];
 
-		AttributionData::updateOrCreate($attributionData);
+		AttributionData::updateOrCreate($checkData, $updateData);
 
 		$responseMessage = [
 			'status' => 'Success',
