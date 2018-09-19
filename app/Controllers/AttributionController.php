@@ -34,7 +34,7 @@ class AttributionController {
 
 	public function getTodayCampaigns($request, $response) {
 		$trends = Capsule::table('attributions')
-					->select('campaign_id, campaign_name', Capsule::raw('count(*) as total'))
+					->select('campaign_id','campaign_name', Capsule::raw('count(*) as total'))
 					->where('updated_at', '>=', Carbon::today())
 					->groupBy('campaign_name')
 					->orderBy('total', 'desc')
