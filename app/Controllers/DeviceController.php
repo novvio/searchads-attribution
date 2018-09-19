@@ -16,12 +16,11 @@ class DeviceController {
 				'attribution_channel' => $params['attributionChannel']
 		];
 
-		$devices = new DeviceData;
-		$devices->updateOrCreate($deviceData);
+		DeviceData::updateOrCreate($deviceData);
 
 		$responseMessage = [
-			'Status' => 'Success',
-			'Message' => 'Device added.'
+			'status' => 'Success',
+			'message' => 'Device added.'
 		];
 
 		return $response->withJson($responseMessage, 200);
