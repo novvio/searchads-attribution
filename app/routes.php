@@ -1,9 +1,13 @@
 <?php
 
+use App\Middleware\AuthMiddleware; 
+
 // Mobile Endpoints
-$app->post('/addDevice', 'DeviceController:addDevice');
-$app->post('/addAttribution', 'AttributionController:addAttribution');
-$app->post('/addPurchase', 'EventController:addPurchase');
+$app->group('', function() {
+	$this->post('/addDevice', 'DeviceController:addDevice');
+	$this->post('/addAttribution', 'AttributionController:addAttribution');
+	$this->post('/addPurchase', 'EventController:addPurchase');
+})->add(new AuthMiddleware($container));
 
 // Panel Endpoints
 $app->get('/todayTurnover', 'EventController:getTodayTurnover');
