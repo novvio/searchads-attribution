@@ -10,7 +10,10 @@ class DeviceController {
 	public function addDevice($request, $response) {
 		$params = $request->getparams();
 
-		$checkData = ['device_id'] => $params['deviceId'];
+		$checkData = [
+			'device_id'] => $params['deviceId']
+		];
+		
 		$updateData = [
 						'country' => $params['country'],
 						'attribution_channel' => $params['attributionChannel']

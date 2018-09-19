@@ -10,7 +10,10 @@ class AttributionController {
 	public function addAttribution($request, $response) {
 		$params = $request->getparams();
 
-		$checkData = ['device_id'] => $params['deviceId'];
+		$checkData = [
+				'device_id' => $params['deviceId']
+		];
+
 		$updateData = [
 				'campaign_name' => $params['campaignName'],
 				'campaign_id' => $params['campaignId'],
