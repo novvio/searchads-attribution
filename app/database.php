@@ -4,11 +4,24 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule();
 
+/*
+
+
+$host = "localhost";
+$username = "celilbozkurt";
+$password = "";
+$database = "celilbozkurt";
+
+
+*/
+
 $url = parse_url(getenv("DATABASE_URL"));
+
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $database = substr($url["path"], 1);
+
 
 $capsule->addConnection (
 	[

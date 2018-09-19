@@ -16,4 +16,8 @@ $app->get('/todayPaid', 'DeviceController:getTodayPaid');
 
 $app->get('/lastSales', 'EventController:getLastSales');
 
+$app->get('/todayCampaigns', 'AttributionController:getTodayCampaigns');
+
+$app->get('/todayAdGroups', 'AttributionController:getTodayAdGroups');
+
 $app->run();

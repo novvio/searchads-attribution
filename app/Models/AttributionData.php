@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class AttributionData extends Eloquent {
-	public $timestamps = false;
+	public $timestamps = true;
 
 	protected $table = 'attributions';
 	protected $primaryKey = 'id';
