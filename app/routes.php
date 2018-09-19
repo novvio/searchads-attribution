@@ -4,6 +4,9 @@ use App\Middleware\AuthMiddleware;
 
 // Mobile Endpoints
 $app->group('', function() {
+	$this->get('/', function() {
+	});
+
 	$this->post('/addDevice', 'DeviceController:addDevice');
 	$this->post('/addAttribution', 'AttributionController:addAttribution');
 	$this->post('/addPurchase', 'EventController:addPurchase');

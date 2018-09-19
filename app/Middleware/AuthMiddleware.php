@@ -8,7 +8,7 @@ use App\Models\AppData;
 class AuthMiddleware {
 
 	public function __invoke($request, $response, $next) {
-		$apiKey = $app->request->headers->get('Authorization');
+		$apiKey = $request->getHeader('Authorization');
 		$exist = AppData::where('api_key', $api_key)->exists();
 
 		if (!$exist) {
