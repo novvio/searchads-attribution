@@ -31,7 +31,7 @@ class DeviceController {
 
 	public function getTodayOrganic($request, $response) {
 		$todayOrganic = DeviceData::where('attribution_channel', 'organic')
-						->where('created_at', '>=', Carbon::today())
+						->where('updated_at', '>=', Carbon::today())
 						->count();
 
 		$responseMessage = [
@@ -44,7 +44,7 @@ class DeviceController {
 
 	public function getTodayPaid($request, $response) {
 		$todayPaid = DeviceData::where('attribution_channel', '!=','organic')
-						->where('created_at', '>=', Carbon::today())
+						->where('updated_at', '>=', Carbon::today())
 						->count();
 
 		$responseMessage = [
