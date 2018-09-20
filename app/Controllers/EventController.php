@@ -29,12 +29,12 @@ class EventController {
 	}
 
 	public function getTodayTurnover($request, $response) {
-		$todayPrice = PurchaseData::where('created_at', '>=', Carbon::today())
+		$todayTurnover = PurchaseData::where('created_at', '>=', Carbon::today())
 						->sum('price');
 
 		$responseMessage = [
 			'status' => 'Success',
-			'todayPrice' => $todayPrice
+			'todayTurnover' => $todayTurnover
 		];
 
 		return $response->withJson($responseMessage, 200);
