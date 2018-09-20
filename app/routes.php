@@ -19,8 +19,9 @@ $app->group('', function() {
 	$this->get('/lastSales', 'EventController:getLastSales');
 	$this->get('/todayCampaigns', 'AttributionController:getTodayCampaigns');
 	$this->get('/todayAdGroups', 'AttributionController:getTodayAdGroups');
-	$this->get('/filter', 'FilterController:filter');
 })->add(new AuthMiddleware($container));
 
+
+$app->get('/filter', 'FilterController:filter');
 
 $app->run();
