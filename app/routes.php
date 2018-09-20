@@ -10,16 +10,17 @@ $app->group('', function() {
 	$this->post('/addDevice', 'DeviceController:addDevice');
 	$this->post('/addAttribution', 'AttributionController:addAttribution');
 	$this->post('/addPurchase', 'EventController:addPurchase');
-})->add(new AuthMiddleware($container));
 
 // Panel Endpoints
-$app->get('/todayTurnover', 'EventController:getTodayTurnover');
-$app->get('/todaySales', 'EventController:getTodaySales');
-$app->get('/todayOrganic', 'DeviceController:getTodayOrganic');
-$app->get('/todayPaid', 'DeviceController:getTodayPaid');
-$app->get('/lastSales', 'EventController:getLastSales');
-$app->get('/todayCampaigns', 'AttributionController:getTodayCampaigns');
-$app->get('/todayAdGroups', 'AttributionController:getTodayAdGroups');
-$app->get('/filter', 'FilterController:filter');
+	$this->get('/todayTurnover', 'EventController:getTodayTurnover');
+	$this->get('/todaySales', 'EventController:getTodaySales');
+	$this->get('/todayOrganic', 'DeviceController:getTodayOrganic');
+	$this->get('/todayPaid', 'DeviceController:getTodayPaid');
+	$this->get('/lastSales', 'EventController:getLastSales');
+	$this->get('/todayCampaigns', 'AttributionController:getTodayCampaigns');
+	$this->get('/todayAdGroups', 'AttributionController:getTodayAdGroups');
+	$this->get('/filter', 'FilterController:filter');
+})->add(new AuthMiddleware($container));
+
 
 $app->run();
