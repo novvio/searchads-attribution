@@ -2,8 +2,8 @@
 
 use App\Middleware\AuthMiddleware; 
 
-// Mobile Endpoints
 $app->group('', function() {
+// Mobile Endpoints
 	$this->get('/', function() {
 	});
 
@@ -19,9 +19,10 @@ $app->group('', function() {
 	$this->get('/lastSales', 'EventController:getLastSales');
 	$this->get('/todayCampaigns', 'AttributionController:getTodayCampaigns');
 	$this->get('/todayAdGroups', 'AttributionController:getTodayAdGroups');
+	
 })->add(new AuthMiddleware($container));
 
-
 $app->get('/filter', 'FilterController:filter');
+$app->get('/getApiKey', 'UserController:getApiKey');
 
 $app->run();
