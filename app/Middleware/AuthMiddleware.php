@@ -3,7 +3,7 @@
 namespace App\Middleware;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use App\Models\AppData;
+use App\Models\UserData;
 
 class AuthMiddleware {
 
