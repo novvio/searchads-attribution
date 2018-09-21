@@ -32,4 +32,8 @@ $container['FilterController'] = function() {
 	return new \App\Controllers\FilterController;
 };
 
+$container['UserController'] = function() {
+	return new \App\Controllers\UserController;
+};
+
 require 'routes.php';
