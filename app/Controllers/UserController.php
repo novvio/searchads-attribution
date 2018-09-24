@@ -35,7 +35,8 @@ class UserController {
 			$userId = $getUser->get('id');
 
 			$apiKey = AppModel::where('api_key', $userId)
-					->get('api_key');
+					->pluck('api_key')
+					->toArray();
 
 			$responseMessage = [
 				'status' => 'Success',
