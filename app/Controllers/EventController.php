@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\PurchaseData;
+use App\Models\PurchaseModel;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -18,7 +18,7 @@ class EventController {
 				'price' => $params['price']
 		];
 
-		PurchaseData::create($request);
+		PurchaseModel::create($request);
 
 		$responseMessage = [
 			'status' => 'Success',
@@ -29,7 +29,7 @@ class EventController {
 	}
 
 	public function getTodayTurnover($request, $response) {
-		$todayTurnover = PurchaseData::where('created_at', '>=', Carbon::today())
+		$todayTurnover = PurchaseModel::where('created_at', '>=', Carbon::today())
 						->sum('price');
 
 		$responseMessage = [
@@ -41,7 +41,7 @@ class EventController {
 	}
 
 	public function getTodaySales($request, $response) {
-		$todaySales = PurchaseData::where('created_at', '>=', Carbon::today())
+		$todaySales = PurchaseModel::where('created_at', '>=', Carbon::today())
 						->count();
 
 		$responseMessage = [
@@ -53,7 +53,7 @@ class EventController {
 	}
 
 	public function getLastSales($request, $response) {
-        $lastSales = PurchaseData::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
+        $lastSales = PurchaseModel::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
             ->select('purchases.*', 'attributions.campaign_name', 'attributions.adgroup_name')
             ->orderBy('purchases.created_at', 'desc')
             ->take(5)

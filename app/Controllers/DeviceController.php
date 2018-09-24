@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\DeviceData;
+use App\Models\DeviceModel;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -19,7 +19,7 @@ class DeviceController {
 			'attribution_channel' => $params['attributionChannel']
 		];
 
-		DeviceData::updateOrCreate($checkData, $updateData)->touch();
+		DeviceModel::updateOrCreate($checkData, $updateData)->touch();
 
 		$responseMessage = [
 			'status' => 'Success',
@@ -30,7 +30,7 @@ class DeviceController {
 	}
 
 	public function getTodayOrganic($request, $response) {
-		$todayOrganic = DeviceData::where('attribution_channel', 'organic')
+		$todayOrganic = DeviceModel::where('attribution_channel', 'organic')
 						->where('updated_at', '>=', Carbon::today())
 						->count();
 
@@ -43,7 +43,7 @@ class DeviceController {
 	}
 
 	public function getTodayPaid($request, $response) {
-		$todayPaid = DeviceData::where('attribution_channel', '!=','organic')
+		$todayPaid = DeviceModel::where('attribution_channel', '!=','organic')
 						->where('updated_at', '>=', Carbon::today())
 						->count();
 

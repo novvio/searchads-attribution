@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use App\Models\AttributionData;
+use App\Models\AttributionModel;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -22,7 +22,7 @@ class AttributionController {
 			'keyword' => $params['keyword']
 		];
 
-		AttributionData::updateOrCreate($checkData, $updateData)->touch();
+		AttributionModel::updateOrCreate($checkData, $updateData)->touch();
 
 		$responseMessage = [
 			'status' => 'Success',

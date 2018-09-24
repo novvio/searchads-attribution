@@ -24,5 +24,6 @@ $app->group('', function() {
 
 $app->get('/filter', 'FilterController:filter');
 $app->get('/getApiKey', 'UserController:getApiKey');
+$app->post('/login', 'UserController:login');
 
 $app->run();
