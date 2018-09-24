@@ -1,9 +1,9 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\AttributionData;
-use App\Models\DeviceData;
-use App\Models\PurchaseData;
+use App\Models\AttributionModel;
+use App\Models\DeviceModel;
+use App\Models\PurchaseModel;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -16,10 +16,10 @@ class FilterController {
 		$to = Carbon::parse($params['to']);
 		$dateArray = array($from, $to->addDay());
 
-		$devices = DeviceData::join('attributions', 'devices.device_id', '=', 'attributions.device_id')
+		$devices = DeviceModel::join('attributions', 'devices.device_id', '=', 'attributions.device_id')
 						->where('devices.attribution_channel', '!=', 'organic');
 
-		$sales = PurchaseData::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
+		$sales = PurchaseModel::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
 						->join('devices', 'purchases.device_id', '=', 'devices.device_id')
 						->where('devices.attribution_channel', '!=', 'organic');
 

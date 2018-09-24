@@ -1,8 +1,9 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 use Illuminate\Database\Capsule\Manager as Capsule;
-use App\Models\UserData;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -20,5 +21,28 @@ class UserController {
 		];
 
 		return $response->withJson($responseMessage, 200);
+	}
+
+	public function login($request, $response) {
+		$params = $request->getparams();
+
+		$getUser = UserModel::where('username', $params['username'])
+				->where('password', $params['params'])
+				->first();
+
+		if ($getUser) {
+			$response = $response->withJson($getUser, 200);
+		} else {
+			$responseMessage = [
+				'error' => [
+					'status' => 401,
+					'message' => 'Bad login data.'
+				]
+			];
+			
+			$response = $response->withJson($responseMessage, 401);
+		}
+
+
 	}
 }
