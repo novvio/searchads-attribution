@@ -3,13 +3,13 @@
 namespace App\Middleware;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use App\Models\UserModel;
+use App\Models\AppModel;
 
 class AuthMiddleware {
 
 	public function __invoke($request, $response, $next) {
 		$apiKey = $request->getHeader('Authorization')[0];
-		$exist = UserModel::where('api_key', $apiKey)->exists();
+		$exist = AppModel::where('api_key', $apiKey)->exists();
 
 		if (!$exist) {
 			$responseMessage = [
