@@ -28,7 +28,7 @@ class UserController {
 		$params = $request->getparams();
 
 		$getUser = UserModel::where('username', $params['username'])
-				->where('password', $params['params'])
+				->where('password', $params['password'])
 				->first();
 
 		if ($getUser) {
