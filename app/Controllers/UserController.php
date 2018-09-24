@@ -34,7 +34,7 @@ class UserController {
 		if ($getUser) {
 			$userId = $getUser->pluck('id');
 
-			$apiKey = AppModel::where('api_key', $userId)
+			$apiKey = AppModel::where('user_id', $userId)
 					->pluck('api_key')
 					->toArray();
 
