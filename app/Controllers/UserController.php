@@ -51,9 +51,7 @@ class UserController {
 				]
 			];
 			
-			$response = $response->withJson($responseMessage, 401);
+			return $response->withJson($responseMessage, 401);
 		}
-
-
 	}
 }
