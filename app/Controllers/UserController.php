@@ -32,7 +32,7 @@ class UserController {
 				->first();
 
 		if ($getUser) {
-			$userId = $getUser->get('id');
+			$userId = $getUser->pluck('id');
 
 			$apiKey = AppModel::where('api_key', $userId)
 					->pluck('api_key')
