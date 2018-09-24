@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\AppModel;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Carbon\Carbon;
@@ -31,7 +32,17 @@ class UserController {
 				->first();
 
 		if ($getUser) {
-			$response = $response->withJson($getUser, 200);
+			$userId = $getUser->get('id');
+
+			$apiKey = AppModel::where('api_key', $userId)
+					->get('api_key');
+
+			$responseMessage = [
+				'status' => 'Success',
+				'apiKey' => $apiKey
+			];
+
+			return $response->withJson($responseMessage, 200);
 		} else {
 			$responseMessage = [
 				'error' => [
