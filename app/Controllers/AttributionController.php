@@ -34,9 +34,10 @@ class AttributionController {
 
 	public function getTodayCampaigns($request, $response) {
 		$todayCampaigns = Capsule::table('attributions')
-					->select('campaign_id','campaign_name', Capsule::raw('count(*) as total'))
-					->where('updated_at', '>=', Carbon::today())
-					->groupBy('campaign_id', 'campaign_name')
+					->join('purchases', 'attributions.device_id', '=', 'purchases.device_id')
+					->select('attributions.campaign_id', 'attributions.campaign_name', Capsule::raw('count(*) as total'))
+					->where('purchases.created_at', '>=', Carbon::today())
+					->groupBy('attributions.campaign_id', 'attributions.campaign_name')
 					->orderBy('total', 'desc')
 					->get();
 
