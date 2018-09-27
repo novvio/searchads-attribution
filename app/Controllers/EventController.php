@@ -41,8 +41,11 @@ class EventController {
 	}
 
 	public function getTodaySales($request, $response) {
-		$todaySales = PurchaseModel::where('created_at', '>=', Carbon::today())
-						->count();
+		$params = $request->getparams();
+		$todaySales = PurchaseModel::join('devices', 'purchases.device_id', '=', 'devices.device_id')
+									->where('devices.attribution_channel', $params['channel'])
+									->where('purchases.created_at', '>=', Carbon::today())
+									->count();
 
 		$responseMessage = [
 			'status' => 'Success',
@@ -52,14 +55,15 @@ class EventController {
 		return $response->withJson($responseMessage, 200);
 	}
 
+
 	public function getLastSales($request, $response) {
         $lastSales = PurchaseModel::join('attributions', 'purchases.device_id', '=', 'attributions.device_id')
-            ->select('purchases.*', 'attributions.campaign_name', 'attributions.adgroup_name')
-            ->orderBy('purchases.created_at', 'desc')
-            ->take(5)
-            ->get()
-            ->makeHidden('purchase_id')
-            ->toArray();
+					            ->select('purchases.*', 'attributions.campaign_name', 'attributions.adgroup_name')
+					            ->orderBy('purchases.created_at', 'desc')
+					            ->take(5)
+					            ->get()
+					            ->makeHidden('purchase_id')
+					            ->toArray();
 
 		$responseMessage = [
 			'status' => 'Success',
