@@ -12,7 +12,7 @@ class UserController {
 	public function getApiKey($request, $response) {
 		$params = $request->getparams();
 
-		$md5 = md5($params['appstore_id'] + Carbon::now());
+		$md5 = md5($params['appstore_id'] . Carbon::now());
 		$sha = hash('sha256', $md5);
 		$apiKey = hash('ripemd160', $sha);
 
