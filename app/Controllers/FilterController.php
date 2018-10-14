@@ -51,7 +51,7 @@ class FilterController {
 			'status' => 'Success',
 			'devices' => $devices,
 			'sales' => $sales,
-			'turnOver' => $turnOver
+			'turnOver' => ($turnOver * 0,7)
 		];
 
 		return $response->withJson($responseMessage, 200);				
