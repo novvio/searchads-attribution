@@ -35,7 +35,7 @@ class UserController {
 			$userId = $getUser->pluck('id');
 
 			$appsData = AppModel::where('user_id', $userId)
-					->makeHidden('id', 'user_id')
+					->makeHidden('id')
 					->toArray();
 
 			$responseMessage = [
