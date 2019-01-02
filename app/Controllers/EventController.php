@@ -34,8 +34,7 @@ class EventController {
 
 		$responseMessage = [
 			'status' => 'Success',
-			'todayTurnover' => $request,
-			'sd' => $request->getAttribute('foo')
+			'todayTurnover' => $todayTurnover
 		];
 
 		return $response->withJson($responseMessage, 200);

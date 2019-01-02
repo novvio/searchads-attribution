@@ -10,7 +10,6 @@ class AuthMiddleware {
 	public function __invoke($request, $response, $next) {
 		$apiKey = $request->getHeader('Authorization')[0];
 		$exist = AppModel::where('api_key', $apiKey)->exists();
-		$request->withAttribute('foo', 'bar');
 
 		if (!$exist) {
 			$responseMessage = [
