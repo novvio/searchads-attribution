@@ -23,7 +23,7 @@ $app->group('', function() {
 })->add(new AuthMiddleware($container));
 
 $app->get('/filter', 'FilterController:filter');
-$app->get('/getApiKey', 'UserController:getApiKey');
+$app->get('/apiKey', 'UserController:getApiKey');
 $app->post('/login', 'UserController:login');
 
 $app->run();

@@ -34,12 +34,14 @@ class UserController {
 		if ($getUser) {
 			$userId = $getUser->pluck('id');
 
-			$apiKey = AppModel::where('user_id', $userId)
-					->pluck('api_key');
+			$appsData = AppModel::where('user_id', $userId)
+					->get()
+					->makeHidden('id', 'user_id')
+					->toArray();
 
 			$responseMessage = [
 				'status' => 'Success',
-				'apiKey' => $apiKey
+				'apps' => $appsData
 			];
 
 			return $response->withJson($responseMessage, 200);
